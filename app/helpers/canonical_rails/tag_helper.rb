@@ -25,8 +25,10 @@ module CanonicalRails
       raw "#{canonical_protocol}#{host}#{path_without_html_extension}#{trailing_slash_if_needed}#{whitelisted_query_string}"
     end
 
-    def canonical_tag(host=canonical_host)
-      tag(:link, :href => canonical_href(host), :rel => 'canonical')
+    def canonical_tag(canonical_url: "", host:canonical_host)
+      canonical_url ||= ""
+      link = canonical_url.empty? ? canonical_href(host) : canonical_url
+      tag(:link, :href => link, :rel => 'canonical')
     end
 
     def whitelisted_params

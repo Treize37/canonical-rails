@@ -178,7 +178,7 @@ describe CanonicalRails::TagHelper do
     end
 
     describe '#canonical_tag' do
-      subject{ helper.canonical_tag('www.foobar.net') }
+      subject{ helper.canonical_tag(host: 'www.foobar.net') }
       it 'uses provided host' do
         should include('www.foobar.net')
       end
